@@ -11,7 +11,7 @@
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/license-GPLv3-blue.svg)](LICENSE)
 
-An advanced Telegram bot with **multi-layered memory architecture**, connecting a **local language model (LM Studio)** with intelligent memory management, reasoning, and consolidation systems.
+An advanced AI Desktop Assistant with **multi-layered memory architecture**, connecting a **local language model (LM Studio)** with intelligent memory management, autonomous reasoning, and a **Document RAG engine**.
 
 ---
 
@@ -46,25 +46,32 @@ An advanced Telegram bot with **multi-layered memory architecture**, connecting 
      - Type-specific thresholds (GOAL: 0.88, IDENTITY/BELIEF: 0.87, others: 0.93)
      - Periodic consolidation (every 10 minutes) + startup consolidation
 
-### 4. **Advanced Command System (Slash Commands)**
+### 4. **Document RAG Engine**
+   - **File Support**: Ingests **PDF** and **DOCX** files.
+   - **Semantic Chunking**: Intelligent text splitting with overlap for context preservation.
+   - **Vector Search**: Uses **FAISS** for high-performance similarity search.
+   - **Auto-Citation**: Responses citing documents automatically append `[Source: filename]`.
+
+### 5. **Advanced Command System (Slash Commands)**
    - **General Resets**: `/ResetChat`, `/ResetMemory`, `/ResetReasoning`, `/ResetMetaMemory`, `/ResetAll`
    - **Type-Specific Removal**: `/RemoveGoal`, `/RemoveIdentity`, `/RemoveFact`, `/RemoveBelief`, `/RemovePreference`, `/RemovePermission`, `/RemoveRule`
    - **Inspection**: `/Memories`, `/MetaMemories`
    - **Maintenance**: `/Consolidate`
+   - **Documents**: `/Documents`, `/DocContent`, `/RemoveDoc`
 
-### 5. **Memory Arbiter**
+### 6. **Memory Arbiter**
    - Autonomous gatekeeper between reasoning and long-term memory
    - Enforces admission rules (confidence thresholds, precedence)
    - Creates meta-memories for transparency
    - Prevents duplicate storage
 
-### 6. **Local LM Integration**
+### 7. **Local LM Integration**
    - Uses LM Studio models via local API (`v1/chat/completions`)
    - Embedding support for semantic similarity
    - Rolling context support with configurable turns
    - Memory-enhanced system prompts
 
-### 7. **Safety Features**
+### 8. **Safety Features**
    - Inactivity-based chat reset (30 minutes)
    - Generic assistant goal filtering (blocks "I'm here to help" pollution)
    - Low-quality candidate filtering (blocks greetings, questions, filler)
